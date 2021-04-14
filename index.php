@@ -35,7 +35,10 @@ if (!empty($_FILES['img']) && isset($_FILES['img'])) {
         // la même à l'envers avec implode()
         $ext = explode("/", $img['type']);
         if ($ext[0] === "image") {
-
+            //je verifie si ce nom de fiochier existe deja 
+            $tbImg = scandir("./upload");
+            var_dump($tbImg);
+            die();
             move_uploaded_file($img['tmp_name'], "./upload/" . $img['name']);
             $newImg = new ImageResize("./upload/" . $img['name']);
             $newImg->resizeToWidth(400);
@@ -71,7 +74,7 @@ if (!empty($_FILES['img']) && isset($_FILES['img'])) {
             <input type="file" name="img" id="img">
             <input type="submit" value="Envoyer">
         </form>
-        <script>
+        <!-- <script>
             const son = new Audio("biquette.mp3");
             //je stop le déclchement avec preventDefault
             document.forms[0].addEventListener("submit", (e) => {
@@ -82,7 +85,7 @@ if (!empty($_FILES['img']) && isset($_FILES['img'])) {
                     document.forms[0].submit();
                 }, 1300)
             })
-        </script>
+        </script> -->
     </div>
 </body>
 
