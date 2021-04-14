@@ -22,6 +22,7 @@ use Gumlet\ImageResize;
   
  */
 
+$erreur = [];
 if (!empty($_FILES['img']) && isset($_FILES['img'])) {
     $img = $_FILES['img'];
     if ($img['size'] > 0 && $img['error'] === 0) {
@@ -37,14 +38,31 @@ if (!empty($_FILES['img']) && isset($_FILES['img'])) {
         if ($ext[0] === "image") {
             //je verifie si ce nom de fiochier existe deja 
             $tbImg = scandir("./upload");
-            var_dump($tbImg);
-            die();
-            move_uploaded_file($img['tmp_name'], "./upload/" . $img['name']);
-            $newImg = new ImageResize("./upload/" . $img['name']);
-            $newImg->resizeToWidth(400);
-            $newImg->save("./upload/" . $img['name']);
+            // valeur string a comparer : $img['name']
+            $i = 0;
+            while ($i < count($tbImg)) {
+                if ($tbImg[$i] === $img['name']) {
+                    $erreur['img'] = "ce fichier existe deja";
+                }
+
+                $i++;
+            }
+        } else {
+            $erreur['img'] = "Le fichier n'est pâs au bon format";
         }
+    } else {
+        $erreur['img'] = "Erreur lors du chargement du fichier";
     }
+    if (count($erreur) === 0) {
+        move_uploaded_file($img['tmp_name'], "./upload/" . $img['name']);
+        $newImg = new ImageResize("./upload/" . $img['name']);
+        $newImg->resizeToWidth(400);
+        $newImg->save("./upload/" . $img['name']);
+        // echo '<script>
+        // document.getElementById("newImg").innerHTML="<img src=\'./upload/'.$img['name'].'\'>";
+        // </script>';
+    }
+    var_dump($erreur);
 }
 ?>
 <!DOCTYPE html>
@@ -74,6 +92,13 @@ if (!empty($_FILES['img']) && isset($_FILES['img'])) {
             <input type="file" name="img" id="img">
             <input type="submit" value="Envoyer">
         </form>
+        <div class="newImg">
+            <?php if (!empty($newImg) && isset($newImg)) { ?>
+                <img src="<?= " ./upload/" . $img['name'] ?>" alt="">
+
+            <?php } ?>
+
+        </div>
         <!-- <script>
             const son = new Audio("biquette.mp3");
             //je stop le déclchement avec preventDefault
