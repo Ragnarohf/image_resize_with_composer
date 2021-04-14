@@ -1,0 +1,62 @@
+#formmp3,
+#formUser {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#formmp3 h1,
+#formUser h1 {
+  margin: 0.5rem auto;
+  color: var(--primaryFocus);
+}
+.formulaire {
+  width: 60vw;
+  margin-top: 2vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  border: 0.1rem var(--primary) solid;
+  border-radius: 1rem;
+  box-shadow: 0 0 1.3rem var(--primary);
+}
+.formulaire * {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.formulaire input,
+textarea {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.2rem var(--primaryFocus) solid;
+}
+.formulaire input:hover,
+textarea:hover,
+select:hover {
+  transition: all 0.7s;
+  background-color: var(--primary);
+}
+.formulaire input[type="submit"] {
+  margin: 1rem auto;
+  width: 30vw;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  background-color: var(--primaryFocus);
+}
+.formulaire input[type="submit"]:hover {
+  transition: all 0.7s;
+  background-color: var(--primary);
+}
+.formulaire label {
+  margin: 0;
+  margin: 0;
+  color: var(--primaryFocus);
+  font-weight: 600;
+  font-size: var(--txtCorp);
+}
+.error {
+  color: red;
+}
