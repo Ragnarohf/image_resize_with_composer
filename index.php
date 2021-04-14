@@ -4,7 +4,7 @@ require_once("./vendor/autoload.php");
 
 use Gumlet\ImageResize;
 
-$image = new ImageResize("");
+$image = new ImageResize("./img/panda.jpg");
 var_dump($image);
 ?>
 
