@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "roboto";
+  src: url("../fonts/Roboto-Regular.ttf");
+}
+body {
+  font-family: "roboto";
+  margin: 0;
+  --primary: rgb(224, 243, 255);
+  --primaryFocus: rgb(27, 34, 98);
+  --secondary: rgb(194, 194, 194);
+  --secondaryFocus: rgb(109, 109, 109);
+  --txtCorp: 0.8rem;
+}
+
 #formmp3,
 #formUser {
   width: 100%;
@@ -59,4 +73,20 @@ select:hover {
 }
 .error {
   color: red;
+}
+#slider {
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#article {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#single {
+  display: flex;
+  justify-content: space-around;
 }

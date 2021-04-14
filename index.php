@@ -55,7 +55,7 @@ if (!empty($_FILES['img']) && isset($_FILES['img'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <script src="./js/jquery.color.min.js"></script>
     <!-- Styles librairies puis styles perso  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
@@ -72,6 +72,16 @@ if (!empty($_FILES['img']) && isset($_FILES['img'])) {
             <input type="file" name="img" id="img">
             <input type="submit" value="Envoyer">
         </form>
+        <script>
+            const son = new Audio("biquette.mp3");
+            document.forms[0].addEventListener("submit", (e) => {
+                e.preventDefault();
+                son.play();
+                setTimeout(() => {
+                    document.forms[0].submit();
+                }, 1300)
+            })
+        </script>
     </div>
 </body>
 
