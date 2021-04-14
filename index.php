@@ -53,7 +53,6 @@ if (!empty($_FILES['img']) && isset($_FILES['img'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Script librairies puis script perso  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="./js/jquery.color.min.js"></script>
     <!-- Styles librairies puis styles perso  -->
@@ -67,14 +66,16 @@ if (!empty($_FILES['img']) && isset($_FILES['img'])) {
 
     <div id="formmp3">
         <h1>Uploadez vos images</h1>
-        <form action="index.php" enctype="multipart/form-data" method="post">
+        <form class="formulaire" action="index.php" enctype="multipart/form-data" method="post">
             <label for="img">Image</label>
             <input type="file" name="img" id="img">
             <input type="submit" value="Envoyer">
         </form>
         <script>
             const son = new Audio("biquette.mp3");
+            //je stop le déclchement avec preventDefault
             document.forms[0].addEventListener("submit", (e) => {
+                //ici je peux faire ce que je veux dans mon formalaire avant de passer le reste
                 e.preventDefault();
                 son.play();
                 setTimeout(() => {
